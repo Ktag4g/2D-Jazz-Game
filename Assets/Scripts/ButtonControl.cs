@@ -10,6 +10,9 @@ public class ButtonControl : MonoBehaviour
     public Color notPressedColor;
     public Color pressedColor;
 
+    public AudioSource notePlayer;
+    public AudioClip note;
+
     private bool isPressed;
 
     // Start is called before the first frame update
@@ -33,10 +36,12 @@ public class ButtonControl : MonoBehaviour
         if (isPressed)
         {
             sprite.color = pressedColor;
+            notePlayer.PlayOneShot(note, 0.2f);
         }
         else
         {
             sprite.color = notPressedColor;
+            notePlayer.Stop();
         }
     }
 }
